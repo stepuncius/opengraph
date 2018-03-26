@@ -12,6 +12,11 @@ try:
 except ImportError:
     from BeautifulSoup import BeautifulSoup
 
+try:
+    from collections import UserDict
+except ImportError:
+    from UserDict import UserDict
+
 global import_json
 try:
     import json
@@ -19,7 +24,7 @@ try:
 except ImportError:
     import_json = False
 
-class OpenGraph(dict):
+class OpenGraph(UserDict):
     """
     """
 
@@ -35,19 +40,13 @@ class OpenGraph(dict):
         for k in kwargs.keys():
             self[k] = kwargs[k]
 
-        dict.__init__(self)
+        self.data = {}
 
         if url is not None:
             self.fetch(url)
 
         if html is not None:
             self.parser(html)
-
-    def __setattr__(self, name, val):
-        self[name] = val
-
-    def __getattr__(self, name):
-        return self[name]
 
     def fetch(self, url):
         """

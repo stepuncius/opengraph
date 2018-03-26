@@ -3,6 +3,11 @@
 import unittest
 import opengraph
 
+try:
+    from collections import UserDict
+except ImportError:
+    from UserDict import UserDict
+
 HTML = """
 <html xmlns:og="http://ogp.me/ns#">
 <head>
@@ -23,7 +28,7 @@ class test(unittest.TestCase):
 
     def test_isinstace(self):
         data = opengraph.OpenGraph()
-        self.assertTrue(isinstance(data,dict))
+        self.assertTrue(isinstance(data, UserDict))
 
     def test_to_html(self):
         og = opengraph.OpenGraph(html=HTML)
