@@ -102,7 +102,7 @@ class OpenGraph(dict):
         if not self.is_valid():
             return json.dumps({'error':'og metadata is not valid'})
 
-        return json.dumps(self)
+        return json.dumps(self, sort_keys=True)
 
     def to_xml(self):
         pass
