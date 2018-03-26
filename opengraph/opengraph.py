@@ -106,6 +106,9 @@ class OpenGraph(UserDict):
     def to_xml(self):
         pass
 
+    def to_dict(self):
+        return self.data
+
     def scrape_image(self, doc):
         images = [dict(img.attrs)['src']
             for img in doc.html.body.findAll('img')]
