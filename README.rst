@@ -1,3 +1,7 @@
+Warning
+=============
+This code wasn't tested under python 2x after fork! Be careful
+
 OpenGraph is a module of python for parsing the Open Graph Protocol, you can read more about the specification at http://ogp.me/
 
 Installation
